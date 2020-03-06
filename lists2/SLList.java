@@ -8,7 +8,7 @@ public class SLList {
 		public IntNode(int i, IntNode n) {
 			item = i;
 			next = n;
-			System.out.println(size);
+			//System.out.println(size);
 		}
 	} 
 
@@ -16,10 +16,10 @@ public class SLList {
 	private IntNode sentinel;
 	private int size;
 
-	private static void lectureQuestion() {
+	/*private static void lectureQuestion() {
 		SLList L = new SLList();
 		IntNode n = IntNode(5, null);
-	}
+	}*/
 
 	/** Creates an empty SLList. */
 	public SLList() {
@@ -31,6 +31,14 @@ public class SLList {
 		sentinel = new IntNode(63, null);
 		sentinel.next = new IntNode(x, null);
 		size = 1;
+	}
+
+	/** Takes in an array of integers, and creates an SLList with those integers */
+	public SLList(int[] array) {
+		sentinel = new IntNode(63, null);
+		for (int i = 0; i < array.length; i += 1) {
+			addLast(array[i]);
+		}
 	}
 
  	/** Adds x to the front of the list. */
@@ -60,13 +68,23 @@ public class SLList {
  	
  	/** Returns the size of the list. */
  	public int size() {
- 		return size;
+ 		 return size;
  	}
+
+	/** Delete the first item of the list. */
+	public void deleteFirst() {
+		size -= 1;
+		sentinel.next = sentinel.next.next;
+	}
 
 	public static void main(String[] args) {
  		/* Creates a list of one integer, namely 10 */
- 		SLList L = new SLList();
- 		L.addLast(20);
+		// SLList L = new SLList();
+		int[] array = new int[]{1,2,3,4,5};
+		SLList L = new SLList(array);
+		// L.addLast(20);
+		// L.addLast(30);
+		// L.deleteFirst();
  		System.out.println(L.size());
  	}
 }
